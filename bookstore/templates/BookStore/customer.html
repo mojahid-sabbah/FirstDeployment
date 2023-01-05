@@ -1,0 +1,65 @@
+{% extends 'BookStore/home.html' %}
+
+{% block content%}
+{% csrf_token %}
+
+<h1 class="m-5"> Customer Page</h1>
+
+<div class="container">
+
+
+<div class="container text-center bg-info p-2">
+  <div class="row">
+    <div class="col">
+     Name : {{custemer.name}}
+    </div>
+    <div class="col">
+     Email : {{custemer.email}}
+    </div>
+    <div class="col">
+     Phone : {{custemer.phone}}
+    </div>
+    <div class="col">
+     Age : {{custemer.age}}
+    </div>
+    <div class="col ">
+     Count Orders : {{count_orders}}
+    </div>
+    
+  </div>
+</div>
+    <a class=" mt-5 btn btn-primary colorup" href="{% url 'create' %}">Add Order </a>
+<table class="table mt-2  table-striped">
+
+  <thead>
+    <tr>
+      <th scope="col">Book Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">status</th>
+    <th scope="col">Action</th>
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in orders %}
+    
+        <tr>
+        <td>{{item.book}}</td>
+        <td>{{item.book.category}}</td>
+        <td>{{item.status}}</td>
+         <td>
+         <a  href="{% url 'update' item.id %}" class=" btn btn-primary">Update </a>
+         <a class="btn btn-danger " href="{% url 'delete' item.id %}">Delete</a>
+        </td>
+
+        </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+</div >
+
+
+{% endblock %}

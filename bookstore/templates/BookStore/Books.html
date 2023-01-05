@@ -1,0 +1,30 @@
+{% extends 'BookStore/home.html' %}
+
+{% block content%}
+{% csrf_token %}
+<h1 class="m-5"> Books Page</h1>
+
+<div class="container">
+<table class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Auther</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in books %}
+        <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.auther}}</td>
+        </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+</div>
+
+
+{% endblock %}

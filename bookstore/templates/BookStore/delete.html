@@ -1,0 +1,20 @@
+{% extends 'BookStore/home.html' %}
+{% load static%}
+
+{% block content%}
+
+<div class="container m-5 text-center">
+    <h3 class=" m-5"> You need to delete the order ... AreYou sure?</h3>
+
+<form action = '{% url 'delete' Order.id %}' method = "POST">
+{% csrf_token %}
+<a  href="{% url 'dashbord'   %}" class="btn btn-success">return </a>
+  <button type="submit" class="btn btn-danger">Delete</button>
+
+</form>
+</div >
+
+{% endblock %}
+
+
+ 

@@ -1,0 +1,85 @@
+{% extends 'BookStore/home.html' %}
+{% load static%}
+
+
+{% block content %}
+{% csrf_token %}
+    <h1 class=" m-5"> Dashbord page</h1>
+<div class="container ms-2">
+
+<table class="table  table-striped">
+    <a class=" mb-3 btn btn-primary colorup" href="{% url 'create' %}">create Order </a>
+
+  <thead>
+    <tr>
+      <th scope="col">customer</th>
+      <th scope="col">book</th>
+      <th scope="col">category</th>
+      <th scope="col">status</th>
+      <th scope="col">created_at</th>
+    <th scope="col">Action</th>
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in Orders %}
+    
+        <tr>
+        <td>{{item.customer}}</td>
+        <td>{{item.book.name}}</td>
+        <td>{{item.book.category}}</td>
+        <td>{{item.status}}</td>
+        <td>{{item.created_at}}</td>
+        <td>
+         <a  href="{% url 'update' item.id %}" class=" btn btn-primary">Update </a>
+         <a class="btn btn-danger " href="{% url 'delete' item.id %}">Delete</a>
+        </td>
+
+        </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+
+
+
+
+
+
+<table class="table mt-2  table-striped">
+    <a class=" mt-5 btn btn-primary colorup" href="{% url 'create' %}">Add Customer </a>
+
+  <thead>
+    <tr>
+      <th scope="col">customer name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+    <th scope="col">Action</th>
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in Customers %}
+    
+        <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone}}</td>
+        <td>
+        <a class="btn btn-danger " href="{% url 'customer' item.id%}">Show Details</a>
+        {% comment %}   <a class=" btn btn-primary colorup" href="#">Update </a> {% endcomment %}    
+    </td>
+
+        </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+</div>
+
+    
+{% endblock %}

@@ -1,0 +1,21 @@
+/* لا ننسى يجب تعريف ملف الstatic in setting folder 
+
+MEDIA_URL ='img/'  عشان ملف الصور
+
+import os
+STATICFILES_DIRS =[
+    os.path.join(BASE_DIR,'static')
+
+*/
+
+
+ a{
+        color :#000;
+    }
+/* .table .colorad{
+        color:brown !important;
+    }
+.table .colorup{
+    
+        color:rgb(42, 165, 58);
+    } */
